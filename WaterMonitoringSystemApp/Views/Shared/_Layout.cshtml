@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title: mi aplicación ASP.NET</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+@if (Request.IsAuthenticated)
+{
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("CYNA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="caja-menu">@Html.ActionLink("Monitor", "Monitor", "FlowDataSensors", new { area = "" }, null)</li>
+                    @*<li>@Html.ActionLink("API", "Index", "Help", new { area = "HelpPage" }, null)</li>*@
+                    <li class="caja-menu">@Html.ActionLink("Reporte", "Index", "FlowDataSensors", new { area = "" }, null)</li>
+                    <li class="dropdown caja-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administración <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("index","TreatmentUnit")">Gestión Unidades de Tratamiento</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="@Url.Action("index","Equipment")">Gestión Equipos</a></li>
+                        </ul>
+                    </li>
+                 </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+}
+    <div class="container body-content">
+        @RenderBody()
+        @RenderSection("SPAViews", required: false)
+        <hr />
+       
+    </div>
+@if (Request.IsAuthenticated)
+{
+    <footer style="padding : 2rem;">
+        <p>&copy; @DateTime.Now.Year - Horizon Technology Solutions Cmoyon Todos los derechos reservados</p>
+    </footer>
+}
+
+    <style type="text/css">
+        .caja-menu{
+            position : relative !important;
+            display : block !important;
+            box-sizing : border-box !important;
+        }
+
+            .caja-menu > a {
+                position : relative !important;
+                display : block !important;
+                transition : all .3s;
+            }
+
+                .caja-menu:hover > a {
+                    background-color: #337ab7 !important;
+                    padding : 13px;
+                    border-bottom : 2px solid #9d9d9d;
+                }
+
+    </style>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/fusioncharts")
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

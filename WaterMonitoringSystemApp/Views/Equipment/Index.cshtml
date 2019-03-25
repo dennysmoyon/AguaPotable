@@ -1,0 +1,157 @@
+﻿@model IEnumerable<ModelsSGH.EquipmentDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<!-- Init Modal small -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="miConfirmEQ">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title title-small-modal" id="myModalLabel">N/A</h5>
+            </div>
+            <div class="modal-body">
+                <div id="modal-content-small">
+                    <p>cargando....</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- finish -->
+<!-- ko with: home -->
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modalEQ">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">N/A</h4>
+            </div>
+            <div class="modal-body">
+                <div id="modal-content">
+                    <p>cargando....</p>
+                </div>
+            </div>
+            @*<div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>*@
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+
+<div class="row row-tittle">
+    <div class="col-md-12">
+        <div class="col-md-8 col-xs-9">
+            <h3>Administración de Equipos de monitoreo</h3>
+        </div>
+        <div class="col-md-4 col-xs-3">
+            <button href="" class="btn-card btn-card-ac1 btn-tittle" id="btnAcEQ" data-toggle="modal" data-target="#modalEQ">
+                <i class="glyphicon glyphicon-pencil"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cod_Equipment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.treatmentUnitDto.Cod_Tu)
+            </th>
+            <th></th>
+            <th>Componente</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cod_Equipment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.treatmentUnitDto.Cod_Tu)
+                </td>
+                <td>
+                    <button class="btn-card btn-card-ac1 btnAcEQUpdate small-card-button" data-toggle="modal" data-target="#modalEQ" data-id="@item.Id_Equipment">
+                        <i class="glyphicon glyphicon-edit"> </i>
+                    </button>|
+                    <button class="btn-card btn-card-ac2 btnAcEQDetail small-card-button" data-toggle="modal" data-target="#modalEQ" data-id="@item.Id_Equipment">
+                        <i class="glyphicon glyphicon-list-alt"> </i>
+                    </button>|
+                    <button class="btn-card btn-card-ac4 btnAcEQDelete small-card-button" data-toggle="modal" data-target="#miConfirmEQ" data-id="@item.Id_Equipment" data-cod="@item.Cod_Equipment">
+                        <i class="glyphicon glyphicon-trash"> </i>
+                    </button>
+                </td>
+                <td>
+                    
+                    <div class="dropdown">
+                        <button class="btn-card btn-card-ac3 btnAcCP small-card-button" data-toggle="modal" data-target="#modalEQ" data-id="@item.Cod_Equipment">
+                            <i class="glyphicon glyphicon-edit"> </i>
+                        </button>|
+                        <button class="btn-card  btn-card-ac2 small-card-button dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <i class="glyphicon glyphicon-wrench"> </i>
+                        </button>
+                        <ul class="dropdown-menu position-right" aria-labelledby="dropdownMenu1">
+                           @if (item.LstComponent.Count > 0)
+                           {
+                               foreach (var itemC in item.LstComponent)
+                               {
+                                <li>
+                                    <strong>@itemC.Cod_Component</strong>
+                                    <a class="btn-action btnDetailCP"  data-toggle="modal" data-target="#modalEQ" data-id="@itemC.Id_Component"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                    <a class="btn-action btnEditCP"  data-id="@itemC.Id_Component"><i class="glyphicon glyphicon-edit"></i></a>
+                                    <a class="btn-action btnDeleteCP"  data-id="@itemC.Id_Component"><i class="glyphicon glyphicon-trash"></i></a>
+                                </li>
+                               }
+
+                           }
+                           else
+                           {
+                               <li><h5 style="padding-left : 10px;"> No tiene componentes</h5></li>
+                           }
+
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/personal/Equipment.js")
+}

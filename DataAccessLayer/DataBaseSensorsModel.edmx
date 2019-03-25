@@ -1,0 +1,599 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DataFlowSensorsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Hometown" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Component">
+          <Key>
+            <PropertyRef Name="Id_Component" />
+          </Key>
+          <Property Name="Id_Component" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Equipment" Type="int" />
+          <Property Name="Cod_Component" Type="char" MaxLength="20" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="Series" Type="varchar" MaxLength="20" />
+          <Property Name="Mark" Type="varchar" MaxLength="20" />
+          <Property Name="Material" Type="varchar" MaxLength="20" />
+          <Property Name="Utility" Type="varchar" MaxLength="50" />
+          <Property Name="active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="Id_Equipment" />
+          </Key>
+          <Property Name="Id_Equipment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cod_Equipment" Type="char" MaxLength="20" />
+          <Property Name="Id_Tu" Type="int" />
+          <Property Name="Size" Type="varchar" MaxLength="20" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Color" Type="varchar" MaxLength="20" />
+          <Property Name="Position" Type="varchar" MaxLength="20" />
+          <Property Name="active" Type="bit" />
+        </EntityType>
+        <EntityType Name="FlowDataSensors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data_Sensor_PH" Type="decimal" Precision="10" Scale="5" Nullable="false" />
+          <Property Name="Data_Sensor_ORP" Type="decimal" Precision="10" Scale="5" Nullable="false" />
+          <Property Name="Data_Sensor_DISOLVED_OXYGEN" Type="decimal" Precision="10" Scale="5" Nullable="false" />
+          <Property Name="Data_Sensor_CONDUCTIVITY" Type="decimal" Precision="10" Scale="5" Nullable="false" />
+          <Property Name="Data_Sensor_WATER_LEVEL" Type="decimal" Precision="10" Scale="5" Nullable="false" />
+          <Property Name="Date_Register" Type="datetime" />
+          <Property Name="Id_Equipment" Type="int" />
+        </EntityType>
+        <EntityType Name="TreatmentUnit">
+          <Key>
+            <PropertyRef Name="Id_Tu" />
+          </Key>
+          <Property Name="Id_Tu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cod_Tu" Type="char" MaxLength="20" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="Addrress" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Latitude" Type="decimal" Precision="17" Scale="14" Nullable="false" />
+          <Property Name="Longitude" Type="decimal" Precision="17" Scale="14" Nullable="false" />
+          <Property Name="Capacity" Type="float" />
+          <Property Name="active" Type="bit" />
+        </EntityType>
+        <Association Name="FK__Component__Id_Eq__2B3F6F97">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1" />
+          <End Role="Component" Type="Self.Component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="Id_Equipment" />
+            </Principal>
+            <Dependent Role="Component">
+              <PropertyRef Name="Id_Equipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__Posit__276EDEB3">
+          <End Role="TreatmentUnit" Type="Self.TreatmentUnit" Multiplicity="0..1" />
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TreatmentUnit">
+              <PropertyRef Name="Id_Tu" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="Id_Tu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FlowDataS__Id_Eq__2C3393D0">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1" />
+          <End Role="FlowDataSensors" Type="Self.FlowDataSensors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="Id_Equipment" />
+            </Principal>
+            <Dependent Role="FlowDataSensors">
+              <PropertyRef Name="Id_Equipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DataFlowSensorsDBModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Component" EntityType="Self.Component" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FlowDataSensors" EntityType="Self.FlowDataSensors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TreatmentUnit" EntityType="Self.TreatmentUnit" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Component__Id_Eq__2B3F6F97" Association="Self.FK__Component__Id_Eq__2B3F6F97">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="Component" EntitySet="Component" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__Posit__276EDEB3" Association="Self.FK__Equipment__Posit__276EDEB3">
+            <End Role="TreatmentUnit" EntitySet="TreatmentUnit" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FlowDataS__Id_Eq__2C3393D0" Association="Self.FK__FlowDataS__Id_Eq__2C3393D0">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="FlowDataSensors" EntitySet="FlowDataSensors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DataFlowSensorsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DataFlowSensorsDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FlowDataSensors" EntityType="DataFlowSensorsDBModel.FlowDataSensors" />
+          <EntitySet Name="AspNetRoles" EntityType="DataFlowSensorsDBModel.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="DataFlowSensorsDBModel.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="DataFlowSensorsDBModel.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="DataFlowSensorsDBModel.AspNetUsers" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="DataFlowSensorsDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="DataFlowSensorsDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="DataFlowSensorsDBModel.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="Component" EntityType="DataFlowSensorsDBModel.Component" />
+          <EntitySet Name="Equipment" EntityType="DataFlowSensorsDBModel.Equipment" />
+          <EntitySet Name="TreatmentUnit" EntityType="DataFlowSensorsDBModel.TreatmentUnit" />
+          <AssociationSet Name="FK__Component__Id_Eq__2B3F6F97" Association="DataFlowSensorsDBModel.FK__Component__Id_Eq__2B3F6F97">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="Component" EntitySet="Component" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__Posit__276EDEB3" Association="DataFlowSensorsDBModel.FK__Equipment__Posit__276EDEB3">
+            <End Role="TreatmentUnit" EntitySet="TreatmentUnit" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FlowDataS__Id_Eq__2C3393D0" Association="DataFlowSensorsDBModel.FK__FlowDataS__Id_Eq__2C3393D0">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="FlowDataSensors" EntitySet="FlowDataSensors" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="FlowDataSensors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data_Sensor_PH" Type="Decimal" Nullable="false" Precision="10" Scale="5" />
+          <Property Name="Data_Sensor_ORP" Type="Decimal" Nullable="false" Precision="10" Scale="5" />
+          <Property Name="Data_Sensor_DISOLVED_OXYGEN" Type="Decimal" Nullable="false" Precision="10" Scale="5" />
+          <Property Name="Data_Sensor_CONDUCTIVITY" Type="Decimal" Nullable="false" Precision="10" Scale="5" />
+          <Property Name="Data_Sensor_WATER_LEVEL" Type="Decimal" Nullable="false" Precision="10" Scale="5" />
+          <Property Name="Date_Register" Type="DateTime" Precision="3" />
+          <Property Name="Id_Equipment" Type="Int32" />
+          <NavigationProperty Name="Equipment" Relationship="DataFlowSensorsDBModel.FK__FlowDataS__Id_Eq__2C3393D0" FromRole="FlowDataSensors" ToRole="Equipment" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="DataFlowSensorsDBModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="DataFlowSensorsDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="DataFlowSensorsDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Hometown" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="DataFlowSensorsDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="DataFlowSensorsDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="DataFlowSensorsDBModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="DataFlowSensorsDBModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DataFlowSensorsDBModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="DataFlowSensorsDBModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DataFlowSensorsDBModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="DataFlowSensorsDBModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+          <End Type="DataFlowSensorsDBModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Component">
+          <Key>
+            <PropertyRef Name="Id_Component" />
+          </Key>
+          <Property Name="Id_Component" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Equipment" Type="Int32" />
+          <Property Name="Cod_Component" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Series" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Mark" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Material" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Utility" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Equipment" Relationship="DataFlowSensorsDBModel.FK__Component__Id_Eq__2B3F6F97" FromRole="Component" ToRole="Equipment" />
+          <Property Name="active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="Id_Equipment" />
+          </Key>
+          <Property Name="Id_Equipment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cod_Equipment" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Id_Tu" Type="Int32" />
+          <Property Name="Size" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Color" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Component" Relationship="DataFlowSensorsDBModel.FK__Component__Id_Eq__2B3F6F97" FromRole="Equipment" ToRole="Component" />
+          <NavigationProperty Name="TreatmentUnit" Relationship="DataFlowSensorsDBModel.FK__Equipment__Posit__276EDEB3" FromRole="Equipment" ToRole="TreatmentUnit" />
+          <NavigationProperty Name="FlowDataSensors" Relationship="DataFlowSensorsDBModel.FK__FlowDataS__Id_Eq__2C3393D0" FromRole="Equipment" ToRole="FlowDataSensors" />
+          <Property Name="active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TreatmentUnit">
+          <Key>
+            <PropertyRef Name="Id_Tu" />
+          </Key>
+          <Property Name="Id_Tu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cod_Tu" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Addrress" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Latitude" Type="Decimal" Nullable="false" Precision="17" Scale="14" />
+          <Property Name="Longitude" Type="Decimal" Nullable="false" Precision="17" Scale="14" />
+          <Property Name="Capacity" Type="Double" />
+          <NavigationProperty Name="Equipment" Relationship="DataFlowSensorsDBModel.FK__Equipment__Posit__276EDEB3" FromRole="TreatmentUnit" ToRole="Equipment" />
+          <Property Name="active" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK__Component__Id_Eq__2B3F6F97">
+          <End Type="DataFlowSensorsDBModel.Equipment" Role="Equipment" Multiplicity="0..1" />
+          <End Type="DataFlowSensorsDBModel.Component" Role="Component" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="Id_Equipment" />
+            </Principal>
+            <Dependent Role="Component">
+              <PropertyRef Name="Id_Equipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__Posit__276EDEB3">
+          <End Type="DataFlowSensorsDBModel.TreatmentUnit" Role="TreatmentUnit" Multiplicity="0..1" />
+          <End Type="DataFlowSensorsDBModel.Equipment" Role="Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TreatmentUnit">
+              <PropertyRef Name="Id_Tu" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="Id_Tu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FlowDataS__Id_Eq__2C3393D0">
+          <End Type="DataFlowSensorsDBModel.Equipment" Role="Equipment" Multiplicity="0..1" />
+          <End Type="DataFlowSensorsDBModel.FlowDataSensors" Role="FlowDataSensors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="Id_Equipment" />
+            </Principal>
+            <Dependent Role="FlowDataSensors">
+              <PropertyRef Name="Id_Equipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DataFlowSensorsDBModelStoreContainer" CdmEntityContainer="DataFlowSensorsDBEntities">
+          <EntitySetMapping Name="FlowDataSensors">
+            <EntityTypeMapping TypeName="DataFlowSensorsDBModel.FlowDataSensors">
+              <MappingFragment StoreEntitySet="FlowDataSensors">
+                <ScalarProperty Name="Id_Equipment" ColumnName="Id_Equipment" />
+                <ScalarProperty Name="Date_Register" ColumnName="Date_Register" />
+                <ScalarProperty Name="Data_Sensor_WATER_LEVEL" ColumnName="Data_Sensor_WATER_LEVEL" />
+                <ScalarProperty Name="Data_Sensor_CONDUCTIVITY" ColumnName="Data_Sensor_CONDUCTIVITY" />
+                <ScalarProperty Name="Data_Sensor_DISOLVED_OXYGEN" ColumnName="Data_Sensor_DISOLVED_OXYGEN" />
+                <ScalarProperty Name="Data_Sensor_ORP" ColumnName="Data_Sensor_ORP" />
+                <ScalarProperty Name="Data_Sensor_PH" ColumnName="Data_Sensor_PH" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="DataFlowSensorsDBModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="DataFlowSensorsDBModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="DataFlowSensorsDBModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="DataFlowSensorsDBModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Hometown" ColumnName="Hometown" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="DataFlowSensorsDBModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Component">
+            <EntityTypeMapping TypeName="DataFlowSensorsDBModel.Component">
+              <MappingFragment StoreEntitySet="Component">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="Utility" ColumnName="Utility" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="Series" ColumnName="Series" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Cod_Component" ColumnName="Cod_Component" />
+                <ScalarProperty Name="Id_Equipment" ColumnName="Id_Equipment" />
+                <ScalarProperty Name="Id_Component" ColumnName="Id_Component" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipment">
+            <EntityTypeMapping TypeName="DataFlowSensorsDBModel.Equipment">
+              <MappingFragment StoreEntitySet="Equipment">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Id_Tu" ColumnName="Id_Tu" />
+                <ScalarProperty Name="Cod_Equipment" ColumnName="Cod_Equipment" />
+                <ScalarProperty Name="Id_Equipment" ColumnName="Id_Equipment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TreatmentUnit">
+            <EntityTypeMapping TypeName="DataFlowSensorsDBModel.TreatmentUnit">
+              <MappingFragment StoreEntitySet="TreatmentUnit">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Addrress" ColumnName="Addrress" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Cod_Tu" ColumnName="Cod_Tu" />
+                <ScalarProperty Name="Id_Tu" ColumnName="Id_Tu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

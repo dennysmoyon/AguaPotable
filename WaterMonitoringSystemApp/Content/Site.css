@@ -1,0 +1,360 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Set padding to display errors that occur during databinding */
+.padding-error {
+    padding-top: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+    .nofloat {
+        float: none;
+        padding: 10px 15px;
+    }
+}
+
+
+
+/********************App Styles*******************/
+   .content-home {
+        position : absolute;
+        top : 0;
+        left : 0;
+        bottom :0;
+        right : 0;
+        z-index : -1;
+        background: url(../../Content/images/font-3.jpg) repeat-y center;
+        /*transform : rotate(90deg)*/
+    }
+    .title{
+        color : #000 !important;
+        border-bottom : solid 2px #9d2323;
+        transition : all .2s;
+        margin-bottom: 2rem;
+    }
+        .title:hover {
+            border-bottom : solid 2px #838383;
+        }
+
+    .card-home {
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background-color: rgba(53, 182, 118, 0.4);
+            /*border-radius: 10%;*/
+            margin-top: 3rem;
+            box-shadow: 4px 10px #484d4d;
+            transition : all .2s;
+
+    }
+
+        .card-home:hover {
+             box-shadow: 4px 10px  rgba(53, 182, 118, 0.4);
+             background-color : #484d4d;
+        }
+
+    .card-img {
+            position: relative;
+            display: block;
+            -moz-box-shadow: 10px 10px 20px #9d2323;
+            width: 160px;
+            height: 159px;
+            padding-top: 2.6rem;
+            border-radius: 3px 54px 39px 54px;
+            transition : all .5s;
+    }
+        
+
+    .tittle-card {
+        position: absolute;
+        color: #fff;
+        padding: 5px;
+        font-size: 16px;
+        background-color: #76D7C4;
+        transition: all .2s;
+        top: -40px;
+        left: -25px;
+        border-radius: 50px;
+        display: flex;
+        width: 55px;
+        height: 55px;
+        align-items: center;
+        padding-left : 11px;
+        z-index :1;
+        transition : all .3s;
+    }
+
+    .card-img:hover {
+            -webkit-transform:scale(1.3);
+            transform:scale(1.3);
+        }
+
+    .tittle-card:hover {
+        -webkit-transform: rotate(360deg);
+        transform : rotate(360deg);
+    }
+
+    .content-cards {
+        position: relative;
+        display : block;
+        margin-top : 5rem;
+        /*overflow : auto;
+        height: 380px;*/
+    }
+
+    .card-buttons {
+        position : relative;
+        display: flex;
+        padding-top : 1rem;
+        padding-bottom : .5rem;
+    }
+
+    .btn-card {
+       position: relative;
+        padding: 2px;
+        border-radius: 50%;
+        background-color: #fff;
+        color: #f5f5f5;
+        width: 40px;
+        height: 40px;
+        outline: none;
+        border: none;
+        margin-right: 10px;
+        font-family: inherit;
+        transition: all .3s;
+        box-shadow: 2px 2px 3px #595b5a;
+        
+    }
+
+    .btn-card-ac1{
+        background-color : #28a745!important
+    }
+
+    .btn-card-ac2{
+        background-color : #007bff!important;
+    }
+
+    .btn-card-ac3{
+        background-color : #6c757d!important;
+    }
+
+    .btn-card-ac4 {
+        background-color : #dc3545 !important;
+    }
+
+
+    .btn-card:hover {
+        background-color : #343a40!important;
+        color : #fff;
+    }
+
+    .card-icon {
+        transform : rotate(90deg);
+        transition : all .3s;
+    }
+
+    .card-icon-reverse {
+        transform : rotate(-90deg);
+        transition : all .3s;
+    }
+
+    .card-collapse {
+        padding : 0px;
+    }
+
+    .well {
+        margin-bottom: 0 !important;
+        overflow: auto;
+        height: 130px;
+        font-size: 12px;
+        text-align: center;
+    }
+
+   .small-card-button {
+        width: 30px !important;
+        height: 30px !important;
+    }
+
+/*****Stylos para login *****/
+ #center-login {
+        display : flex;
+        padding : 1rem;
+        
+    }
+
+     .checkPersonal {
+            margin-left : 0 !important;
+     }
+
+    .personal-input {
+        position : relative;
+        display : block;
+        max-width : 100% !important;
+        outline : none !important;
+        border-radius : 20px;
+    }
+
+    .btn-default-sgh{
+         border-radius : 20px;
+    }
+
+        .btn-default-sgh:hover {
+            background-color : #343a40!important;
+            color : #fff;
+        }
+
+
+    @media only screen and (min-width: 500px){
+        #center-login { 
+            justify-content : center;
+        }
+
+        #text-title {
+            text-align: center;
+        }
+
+        #center-login {
+            /*border-radius : 0 255px 100px 255px;*/
+        }
+    }
+
+
+    /*******estilos para tabla ********/
+     .menuCharts {
+        position:fixed;
+        top:0;
+        bottom : 0;
+        left : 0;
+        right : 0;
+        z-index : -1;
+    }
+   
+    .tableContainer {
+        position : relative;
+        display : block;
+        margin : 0 auto;
+        width : 70%;
+    }
+
+   .table-fixed thead {
+     width: 100%;
+     background-color : #000000;
+     color : #fff;
+    }
+
+    .table-fixed tbody {
+      height: 350px;
+      overflow-y: auto;
+      width: 100%;
+    }
+
+    .table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+      display: block;
+    }
+
+    .table-fixed tbody td, .table-fixed thead > tr> th {
+      border-bottom-width: 0;
+    }
+
+    .content-abanik {
+        position : relative;
+        display : block;
+        background : red;
+    }
+    @media only screen and (max-width: 500px) {
+        .tableContainer {
+            margin-left : 0;
+        }
+        
+    }
+
+    /************************estilos para Monitor ****************/
+     .main-content {
+        position: relative;
+        display: block;
+        background-color: rgba(31,201,208,0.03);
+        padding: 2rem;
+        margin-bottom: 0;
+    }
+
+    .card-anim {
+        position: relative;
+        display: block;
+        bottom: 0;
+        right: 0;
+        transition: all .3s;
+    }
+
+        .card-anim:hover {
+            background-color: #9ac45d;
+            bottom: 3px;
+            right: 3px;
+        }
+
+    .chart-monitor {
+        position: relative;
+        display: block;
+        height: 32rem;
+    }
+
+     .chart-monitorfull {
+        position: relative;
+        display: block;
+        height: 40rem;
+    }
+
+/***********************estilos para los titulos de secciones ***********************/
+.btn-tittle {
+    position:absolute;
+    right : 0;
+    top : 2rem;
+}
+
+.row-tittle {
+    margin-bottom : 2rem;
+}
+
+/***************position right******************/
+.position-right {
+    right: 60px !important;
+    left: -200px;
+    top: -2px;
+    max-height: 9rem;
+    overflow: auto;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.btn-action {
+    display: inline-block !important;
+    padding: 4px 7px !important;
+    color: #28a745 !important;
+    transition : all ease;
+}
+
+    .btn-action :hover {
+        color : #333 !important;
+    }

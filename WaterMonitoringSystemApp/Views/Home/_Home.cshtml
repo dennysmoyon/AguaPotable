@@ -1,0 +1,130 @@
+﻿<!-- ko with: home -->
+<style type="text/css">
+ 
+</style>
+
+<div class="content-home">
+</div>
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+  
+        <h1 class="title" ><strong>CYNA</strong> <small>CALIDAD Y NIVELES DE AGUA</small></h1>
+    </div>  
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="content-cards">
+      
+            <div class="col-md-offset-1 col-md-2 ">
+                <div class="card-home">
+
+                    <h3 class="tittle-card">PH</h3>
+                    <img  class="card-img" src="~/Content/images/ph.png" />
+                    <div class="card-buttons">
+                        <button class="btn-card"  onclick="location.href='@Url.Action("Monitor", "FlowDataSensors")'" ><i class="glyphicon glyphicon-stats"></i></button>
+                        <button class="btn-card" onclick="animatedBtn(this)" data-toggle="collapse" data-target="#collapseExampleph" aria-expanded="false" 
+                                aria-controls="collapseExampleph"><i class="glyphicon glyphicon-log-out card-icon-reverse" id="card-ico-ph"></i></button>    
+                    </div>
+                    <div class="collapse card-collapse" id="collapseExampleph">
+                        <div class="well">
+                            El pH es una medida del grado de acidez o de alcalinidad del agua. La escala de unidades de pH va desde 0 (muy ácido) hasta 14 
+                            (muy básico), y el valor medio es de 7 unidades. Su valores deben comprender entre 6 y 9.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 ">
+                <div class="card-home">
+                    <h3 class="tittle-card">ORP</h3>
+                    <img class="card-img" src="~/Content/images/orp.png" />
+                    <div class="card-buttons">
+                        <button class="btn-card" onclick="location.href='@Url.Action("Monitor", "FlowDataSensors")'" ><i class="glyphicon glyphicon-stats"></i></button>
+                        <button class="btn-card" onclick="animatedBtn(this)" data-toggle="collapse" data-target="#collapseExampleorp" aria-expanded="false" 
+                                aria-controls="collapseExampleorp"><i class="glyphicon glyphicon-log-out card-icon-reverse" id="card-ico-ph"></i></button>
+                    </div>
+                    <div class="collapse card-collapse" id="collapseExampleorp">
+                        <div class="well">
+                            Es un parámetro para medir la energía química de oxidación-reducción. El ORP es positivo cuando se produce una oxidación y negativo 
+                            cuando se produce reducción. Un valor de 650 mV es un valor adecuado para el agua potable.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 ">
+                <div class="card-home">
+                    <h3 class="tittle-card">LW</h3>
+                    <img class="card-img" src="~/Content/images/lw.png" />
+                    <div class="card-buttons">
+                        <button class="btn-card" onclick="location.href='@Url.Action("Monitor", "FlowDataSensors")'" ><i class="glyphicon glyphicon-stats"></i></button>
+                        <button class="btn-card" onclick="animatedBtn(this)" data-toggle="collapse" data-target="#collapseExamplelw" aria-expanded="false" 
+                                aria-controls="collapseExamplelw"><i class="glyphicon glyphicon-log-out card-icon-reverse" id="card-ico-ph"></i></button>
+                    </div>
+                    <div class="collapse card-collapse" id="collapseExamplelw">
+                        <div class="well">
+                            Para mediciones de los niveles se utilizan sensores de nivel, el cual es un dispositivo electrónico que mide la altura del material, 
+                            generalmente líquido, dentro de un tanque u otro recipiente.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 ">
+                <div class="card-home">
+                    <h3 class="tittle-card">
+                        CT
+                    </h3>
+                    <img class="card-img" src="~/Content/images/ct.png" />
+                    <div class="card-buttons">
+                        <button class="btn-card" onclick="location.href='@Url.Action("Monitor", "FlowDataSensors")'" ><i class="glyphicon glyphicon-stats"></i></button>
+                        <button class="btn-card" onclick="animatedBtn(this)" data-toggle="collapse" data-target="#collapseExamplect" aria-expanded="false" 
+                                aria-controls="collapseExamplect"><i class="glyphicon glyphicon-log-out card-icon-reverse" id="card-ico-ph"></i></button>
+                    </div>
+                    <div class="collapse card-collapse" id="collapseExamplect">
+                        <div class="well">
+                            La conductividad del agua es un valor muy utilizado para determinar el contenido de sales disueltas en ella. Es el inverso de la resistencia 
+                            que opone el agua al paso de la corriente eléctrica. La cantidad de sales disueltas en el agua es lo que le da la capacidad de 
+                            conducir electricidad. Si la cantidad de sales disueltas en el agua es mayor, más va a conducir el agua la electricidad. Un valor entre 50-1500 
+                            es óptimo para el agua potable.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 ">
+                <div class="card-home">
+                    <h3 class="tittle-card">OD</h3>
+                    <img class="card-img" src="~/Content/images/od.png" />
+                    <div class="card-buttons">
+                        <button class="btn-card" onclick="location.href='@Url.Action("Monitor", "FlowDataSensors")'" ><i class="glyphicon glyphicon-stats"></i></button>
+                        <button class="btn-card" onclick="animatedBtn(this)" data-toggle="collapse" data-target="#collapseExampleod" 
+                                aria-expanded="false" aria-controls="collapseExampleod"><i class="glyphicon glyphicon-log-out card-icon-reverse" 
+                                                                                          id="card-ico-ph"></i></button>
+                    </div>
+                    <div class="collapse card-collapse" id="collapseExampleod">
+                        <div class="well">
+                            Es la cantidad de oxígeno que está disuelta en el agua. El nivel de OD es un parámetro de calidad del agua. 
+                            Por lo tanto un nivel alto de oxígeno indica que el agua es de mejor calidad. Su valor óptimo debe ser > 6 mg/L.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div> 
+</div> 
+
+<script type="text/javascript">
+
+    function animatedBtn(even) {
+        var icon = $(even).find(">:first-child");
+        var inclass = icon.hasClass("card-icon");
+        if (inclass) {
+            icon[0].classList.remove("card-icon");
+            icon.addClass("card-icon-reverse");
+            console.log("true", icon);
+        } else {
+            icon[0].classList.remove("card-icon-reverse");
+            icon.addClass("card-icon");
+            console.log("false", icon);
+        }
+    }
+</script>
+<!-- /ko -->

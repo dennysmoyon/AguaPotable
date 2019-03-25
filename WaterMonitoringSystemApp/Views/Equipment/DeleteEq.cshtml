@@ -1,0 +1,79 @@
+﻿@model ModelsSGH.EquipmentDTO
+
+@{
+    ViewBag.Title = "DeleteEq";
+    Layout = null;
+}
+
+<h5>¿Estás seguro de eliminar el equipo @Model.Cod_Equipment ?</h5>
+<div>
+    <hr />
+    <dl class="center-block">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cod_Equipment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cod_Equipment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.treatmentUnitDto.Cod_Tu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.treatmentUnitDto.Cod_Tu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Position)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Position)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.active)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <button class="btn btn-danger" type="submit">Eliminar</button>
+        </div>
+    }
+</div>
+

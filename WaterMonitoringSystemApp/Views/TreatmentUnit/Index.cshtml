@@ -1,0 +1,123 @@
+﻿@model IEnumerable<ModelsSGH.TreatmentUnitDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Init Modal small -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="miConfirm">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title title-small-modal" id="myModalLabel">CONFIRMAR</h5>
+            </div>
+            <div class="modal-body">
+                <div id="modal-content-small">
+                    <p>cargando....</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- finish -->
+
+<!-- ko with: home -->
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modalTU">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">N/A</h4>
+            </div>
+            <div class="modal-body">
+                <div id="modal-content">
+                    <p>cargando....</p>
+                </div>
+            </div>
+            @*<div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>*@
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="row row-tittle">
+    <div class="col-md-12">
+        <div class="col-md-8 col-xs-9">
+            <h3>Adminstración de Unidades de tratamiento </h3>
+        </div>
+        <div class="col-md-4 col-xs-3">
+            <button class="btn-card btn-card-ac1 btn-tittle" id="btnAcTU" data-toggle="modal" data-target="#modalTU">
+                <i class="glyphicon glyphicon-pencil"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cod_Tu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Addrress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Latitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Longitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capacity)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cod_Tu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Addrress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Latitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Longitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Capacity)
+                </td>
+                <td>
+                    <button class="btn-card btn-card-ac1 btnAcTUUpdate small-card-button" data-toggle="modal" data-target="#modalTU" data-id="@item.Id_Tu">
+                        <i class="glyphicon glyphicon-edit"> </i>
+                    </button>|
+                    <button class="btn-card btn-card-ac2 btnAcTUDetail small-card-button" data-toggle="modal" data-target="#modalTU" data-id="@item.Id_Tu">
+                        <i class="glyphicon glyphicon-list-alt"> </i>
+                    </button>|
+                    <button class="btn-card btn-card-ac4 btnAcTUDelete small-card-button" data-toggle="modal" data-target="#miConfirm" data-id="@item.Id_Tu" data-cod="@item.Cod_Tu">
+                        <i class="glyphicon glyphicon-trash"> </i>
+                    </button>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/personal/TreatmentUnit.js")
+}

@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "Monitor";
+}
+
+<!-- ko with: home -->
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modalChartsFull">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Monitoreo de sensor</h4>
+            </div>
+            <div class="modal-body">
+                <div class="chart-monitorfull chart-container-full"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-4" id="chartOX">
+            <div class="thumbnail card-anim">
+                <div>
+                    <div class="chart-monitor" id="chart-containerOX"></div>
+                </div>
+                <div class="caption">
+                    <h4>Datos de Oxigeno Disuelto (O.D.)</h4>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4" id="chartORP">
+            <div class="thumbnail card-anim">
+                <div>
+                    <div class="chart-monitor" id="chart-containerORP"></div>
+
+                </div>
+                <div class="caption">
+                    <h4>Niveles O.R.P.</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4" id="chartPH">
+            <div class="thumbnail card-anim">
+                <div>
+                    <div class="chart-monitor" id="chart-containerPH"></div>
+                </div>
+                <div class="caption">
+                    <h4>Niveles de P.H.</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4" id="ChartCD">
+            <div class="thumbnail card-anim">
+                <div>
+                    <div class="chart-monitor" id="chart-containerCD"></div>
+                </div>
+                <div class="caption">
+                    <h4>Variabilidad de conductividad (C.T.)</h4>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4" id="LW">
+            <div class="thumbnail card-anim">
+                <div>
+                    <div class="chart-monitor" id="chart-containerLW"></div>
+                </div>
+                <div class="caption">
+                    <h4>Niveles de agua Aproximados (N.A.)</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4" id="resumeTable">
+            <div class="thumbnail card-anim">
+                <div>
+                    <div class="chart-monitor chart-container-full"></div>
+                </div>
+                <div class="caption">
+                    <h4>Resumen</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /ko -->
+@section Scripts{
+    @Scripts.Render("~/Scripts/personal/WebsocketConect.js")
+    @Scripts.Render("~/Scripts/personal/designerChartsBySensor.js")
+}

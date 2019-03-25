@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterMonitoringSystemApp", "WaterMonitoringSystemApp\WaterMonitoringSystemApp.csproj", "{CCCA6439-CA4D-4027-A374-12C9AC6648F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{60795754-DB55-433B-8A56-578A7A3A932C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelsSGH", "ModelsSGH\ModelsSGH.csproj", "{0A5A641C-3C1A-4A19-87C1-BA9444CF6261}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCCA6439-CA4D-4027-A374-12C9AC6648F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCCA6439-CA4D-4027-A374-12C9AC6648F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCCA6439-CA4D-4027-A374-12C9AC6648F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCCA6439-CA4D-4027-A374-12C9AC6648F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60795754-DB55-433B-8A56-578A7A3A932C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60795754-DB55-433B-8A56-578A7A3A932C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60795754-DB55-433B-8A56-578A7A3A932C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60795754-DB55-433B-8A56-578A7A3A932C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A5A641C-3C1A-4A19-87C1-BA9444CF6261}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A5A641C-3C1A-4A19-87C1-BA9444CF6261}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A5A641C-3C1A-4A19-87C1-BA9444CF6261}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A5A641C-3C1A-4A19-87C1-BA9444CF6261}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

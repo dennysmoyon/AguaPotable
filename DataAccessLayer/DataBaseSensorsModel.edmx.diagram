@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3abdb8b2e19040e1bafd03dbd46b3ca3" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="DataFlowSensorsDBModel.FlowDataSensors" Width="1.5" PointX="0.5" PointY="0.75" />
+        <EntityTypeShape EntityType="DataFlowSensorsDBModel.AspNetRoles" Width="1.5" PointX="8.125" PointY="0.5" />
+        <EntityTypeShape EntityType="DataFlowSensorsDBModel.AspNetUserClaims" Width="2" PointX="7.875" PointY="3.625" />
+        <EntityTypeShape EntityType="DataFlowSensorsDBModel.AspNetUserLogins" Width="2" PointX="11" PointY="1.75" />
+        <EntityTypeShape EntityType="DataFlowSensorsDBModel.AspNetUsers" Width="1.5" PointX="5.625" PointY="1.25" />
+        <AssociationConnector Association="DataFlowSensorsDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="DataFlowSensorsDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="DataFlowSensorsDBModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="DataFlowSensorsDBModel.Component" Width="1.5" PointX="0.875" PointY="4.125" />
+        <EntityTypeShape EntityType="DataFlowSensorsDBModel.Equipment" Width="1.75" PointX="2.875" PointY="0.5" />
+        <EntityTypeShape EntityType="DataFlowSensorsDBModel.TreatmentUnit" Width="1.75" PointX="3.625" PointY="4.75" />
+        <AssociationConnector Association="DataFlowSensorsDBModel.FK__Component__Id_Eq__2B3F6F97" />
+        <AssociationConnector Association="DataFlowSensorsDBModel.FK__Equipment__Posit__276EDEB3" />
+        <AssociationConnector Association="DataFlowSensorsDBModel.FK__FlowDataS__Id_Eq__2C3393D0" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
