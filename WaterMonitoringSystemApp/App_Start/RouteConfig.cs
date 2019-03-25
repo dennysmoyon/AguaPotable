@@ -19,16 +19,17 @@ namespace WaterMonitoringSystemApp
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
-            //routes.MapRoute(
-            //    name : "reportSensors",  
-            //    url : "FlowDataSensors/reportSensors/{dateSince}/{dateUntil}/",
-            //    defaults : new {
-            //        controller = "FlowDataSensors",
-            //        action  = "reportSensors",
-            //        dateSince = UrlParameter.Optional,
-            //        dateUntil = UrlParameter.Optional
-            //    } 
-            //);
+            routes.MapRoute(
+                name: "reportSensors",
+                url: "FlowDataSensors/reportSensors/{dateSince}/{dateUntil}/",
+                defaults: new
+                {
+                    controller = "FlowDataSensors",
+                    action = "reportSensors",
+                    dateSince = UrlParameter.Optional,
+                    dateUntil = UrlParameter.Optional
+                }
+            );
 
         }
     }

@@ -2,6 +2,7 @@
 using DataAccessLayer.LN;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -44,30 +45,29 @@ namespace WaterMonitoringSystemApp.Controllers
             return File(abyteReport, "application/pdf");
         }*/
 
-        public ActionResult reportSensors(string id)
+        public ActionResult reportSensors(string dateSince, string dateUntil)
         {
             try
             {
-                string[] dates = null;
-                DateTime _dateSince = new DateTime();
-                DateTime _dateUntil = new DateTime();
+                DateTime _dateSince = DateTime.ParseExact(dateSince, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+                DateTime _dateUntil = DateTime.ParseExact(dateUntil, "dd-MM-yyyy", CultureInfo.InvariantCulture);
 
-                if (id == null) {
-                    id = "";
-                    dates = new string[4];                   
-                    dates[0] = "";
-                    dates[1] = "";
-                }
-                else {
-                    dates = id.Split('!');
-                    _dateSince = Convert.ToDateTime(dates[0]);
-                    _dateUntil = Convert.ToDateTime(dates[1]);
-                }
+                //if (id == null) {
+                //    id = "";
+                //    dates = new string[4];                   
+                //    dates[0] = "";
+                //    dates[1] = "";
+                //}
+                //else {
+                //    dates = id.Split('!');
+                //_dateSince = Convert.ToDateTime(dateSince);
+                //_dateUntil = Convert.ToDateTime(dateUntil);
+                //}
 
 
                 var dataDFS = _dataSensors.filterReportSensors(_dateSince, _dateUntil);
                 DataSensorsReport dsfReport = new DataSensorsReport();
-                byte[] abyteReport = dsfReport.PrepareReport(dataDFS, dates[0], dates[1]);
+                byte[] abyteReport = dsfReport.PrepareReport(dataDFS, dateSince, dateUntil);
                 return File(abyteReport, "application/pdf");
 
 

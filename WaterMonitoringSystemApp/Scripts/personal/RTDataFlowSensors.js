@@ -51,7 +51,7 @@ window.onload = () => {
                _dateUntil = $("#datePick2").val();
                console.log("_dateUntil", _dateUntil);
                console.log("_dateSince", _dateSince);
-               var url = "FlowDataSensors/reportSensors/" + _dateSince + "!" + _dateUntil;
+               var url = "FlowDataSensors/reportSensors/" + _dateSince + "/" + _dateUntil;
                iframe.attr('src', url);
            });
 

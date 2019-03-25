@@ -36,6 +36,7 @@ namespace DataAccessLayer.LN
                 if (component != null) {
                     cp = Mapper.Map<ComponentDTO>(component);
                     cp.EquipmentDTO = Mapper.Map<EquipmentDTO>(component.Equipment);
+                    cp.EquipmentDTO.treatmentUnitDto = Mapper.Map<TreatmentUnitDTO>(component.Equipment.TreatmentUnit);
                     return cp;
                 }
                 return cp;
@@ -54,6 +55,7 @@ namespace DataAccessLayer.LN
                 {
                     cp = Mapper.Map<ComponentDTO>(component);
                     cp.EquipmentDTO = Mapper.Map<EquipmentDTO>(component.Equipment);
+                    cp.EquipmentDTO.treatmentUnitDto = Mapper.Map<TreatmentUnitDTO>(component.Equipment.TreatmentUnit);
                     return cp;
                 }
                 return cp;
@@ -71,7 +73,7 @@ namespace DataAccessLayer.LN
 
                 var componentUp  = dbContext.Component.FirstOrDefault(sq => sq.Id_Component == id && sq.active == true);
                 if (componentUp != null) {
-                    componentUp.active = true;
+                    componentUp.active = false;
                     dbContext.SaveChanges();
                 }
             }

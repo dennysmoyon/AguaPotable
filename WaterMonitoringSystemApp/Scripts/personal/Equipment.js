@@ -28,7 +28,18 @@ $(".btnAcCP").click(function () {
 });
 
 $(".btnDetailCP").click(function () {
-    console.log("componentes", $(this).data("id"));
-    /*$("#modal-content").load("Component/AddCmp/" + $(this).data("id"));*/
+    $("#modal-content").load("Component/DetailCmp/" + $(this).data("id"));
     $(".modal-title").html("Gestión de componentes");
 });
+
+$(".btnEditCP").click(function () {
+    $("#modal-content").load("Component/UpdateCmp/" + $(this).data("id"));
+    $(".modal-title").html("Gestión de componentes");
+});
+
+$(".btnDeleteCP").click(function () {
+    $("#modal-content-small").load("Component/DeleteCmp/" + $(this).data("id"));
+    $(".modal-title").html("Gestión de componentes");
+});
+
+

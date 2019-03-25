@@ -3,51 +3,62 @@
     ViewBag.Title = "Registrarse";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2 class="text-title">Registrate en SAIR.</h2>
+<div class="row">
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Cree una cuenta nueva.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Hometown, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Hometown, new { @class = "form-control" })
-        </div>
-    </div>    
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Registrarse" />
-        </div>
-    </div>
-}
+    <div class="col-md-12 col-xs-12">
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        <div class="center-login">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new {id="formReg", @class = "form-horizontal", @style = "width : 35%", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Create un nueva cuenta local en <strong>SAIR</strong></h4>
+                <hr />
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(m => m.UserName, new { placeholder = "Usuario", @class = "form-control  personal-input" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(m => m.Email, new { placeholder = "Email", @class = "form-control  personal-input" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(m => m.Hometown, new { placeholder = "Ciudad de Origen", @class = "form-control  personal-input" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.PasswordFor(m => m.Password, new { placeholder = "Contraseña", @class = "form-control  personal-input" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = "Confirme contraseña", @class = "form-control  personal-input" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-9 col-md-3">
+                            <input type="submit" class="btn btn-default btn-default-sgh btn-success" value="Registrarse" />
+
+                    </div>
+                   
+                </div>
+
+                @Html.ActionLink("Inicia sesion desde aqui", "Login")
+
+            }
+
+        </div>
+
+
+    </div>
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

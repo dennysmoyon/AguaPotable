@@ -52,7 +52,36 @@ namespace WaterMonitoringSystemApp.Controllers
         }
 
         public ActionResult DetailCmp(int id) {
+           /* var component = _component.GetComponent(id);
+            component.EquipmentDTO = new EquipmentDTO;
+            component.EquipmentDTO = _equipment.GetEquipment()*/
             return View(_component.GetComponent(id));
         }
+
+        public ActionResult UpdateCmp(int id) {
+            return View(_component.GetComponent(id));
+        }
+
+        [HttpPost]
+        public ActionResult UpdateCmp(ComponentDTO component) {
+            if (ModelState.IsValid) {
+                component.active = true;
+                _component.UpdateComponent(component);
+                return RedirectToAction("index", "Equipment");
+            }
+            return View(component);
+        }
+
+        public ActionResult DeleteCmp(int id) {
+            return View(_component.GetComponent(id));
+        }
+
+        [HttpPost]
+        public ActionResult DeleteCmp(int id, FormCollection form)
+        {
+            _component.DeleteComponent(id);
+            return RedirectToAction("index", "Equipment");
+        }
+
     }
 }

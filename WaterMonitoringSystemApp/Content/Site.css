@@ -199,7 +199,7 @@ textarea {
     }
 
 /*****Stylos para login *****/
- #center-login {
+ .center-login {
         display : flex;
         padding : 1rem;
         
@@ -219,27 +219,37 @@ textarea {
 
     .btn-default-sgh{
          border-radius : 20px;
+         outline : none !important;
     }
 
         .btn-default-sgh:hover {
             background-color : #343a40!important;
             color : #fff;
+            border-color :  #343a40!important;
         }
 
 
     @media only screen and (min-width: 500px){
-        #center-login { 
+        .center-login { 
             justify-content : center;
         }
 
-        #text-title {
+        .text-title {
             text-align: center;
         }
 
-        #center-login {
+        .center-login {
             /*border-radius : 0 255px 100px 255px;*/
         }
     }
+
+
+
+@media only screen and (max-width : 500px) {
+    #formReg {
+        width : 100%  !important;
+    }
+}
 
 
     /*******estilos para tabla ********/

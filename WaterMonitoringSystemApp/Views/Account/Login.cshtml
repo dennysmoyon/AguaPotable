@@ -4,15 +4,15 @@
     ViewBag.Title = "Iniciar sesión";
 }
 
-<h2 id="text-title">@ViewBag.Title.</h2>
+<h2 class="text-title">Bienvenidos a SAIR</h2>
 <div class="row">
     <div class="col-md-12 col-xs-12">
-        <div id="center-login">
-            <section id="loginForm">
+        <div class="center-login">
+            @*<section id="loginForm">*@
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
-                    <h4>Use una cuenta local para iniciar sesión.</h4>
+                    <h4>Inicia sesión con una cuenta local de  <strong>SAIR</strong></h4>
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
@@ -39,7 +39,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-8 col-md-4">
-                            <input type="submit" value="Iniciar sesión" class="btn btn-default btn-default-sgh" />
+                            <input type="submit" value="Iniciar sesión" class="btn btn-default btn-default-sgh btn-success" />
                         </div>
                     </div>
                     <p>
@@ -50,7 +50,7 @@
                             @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
                         </p>*@
                 }
-            </section>
+            @*</section>*@
         </div>
     </div>
     @*<div class="col-md-4">

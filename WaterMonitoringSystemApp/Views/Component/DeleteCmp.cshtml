@@ -1,0 +1,79 @@
+﻿@model ModelsSGH.ComponentDTO
+
+@{
+    ViewBag.Title = "DeleteCmp";
+    Layout = null;
+}
+
+<div class="alert alert-warning" role="alert">
+    <h5><strong>¿Está seguro que desea eliminar el componenete @Model.Cod_Component para el equipo @Model.EquipmentDTO.Cod_Equipment?</strong></h5>
+</div>
+<div>
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cod_Component)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cod_Component)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Series)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Series)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Material)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Material)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Utility)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Utility)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.active)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <button class="btn btn-danger" type="submit">Eliminar</button>
+        </div>
+    }
+</div>

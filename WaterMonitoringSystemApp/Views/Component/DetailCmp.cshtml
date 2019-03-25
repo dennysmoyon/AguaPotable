@@ -1,0 +1,126 @@
+﻿@model ModelsSGH.ComponentDTO
+
+@{
+    ViewBag.Title = "DetailCmp";
+    Layout = null;
+}
+
+<h4>Detalle del componete y sus dependencias</h4>
+<hr/>
+<div class="dl-horizontal">
+    <h5><strong>UNIDAD DE TRATAMIENTO</strong></h5>
+    <dl>
+        <!--Unidad e tratamiento-->
+        <dt>
+            @Html.DisplayNameFor(model => model.EquipmentDTO.treatmentUnitDto.Cod_Tu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EquipmentDTO.treatmentUnitDto.Cod_Tu)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EquipmentDTO.treatmentUnitDto.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EquipmentDTO.treatmentUnitDto.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EquipmentDTO.treatmentUnitDto.Capacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EquipmentDTO.treatmentUnitDto.Capacity)
+        </dd>
+    </dl>
+    <hr />
+    <h5><strong>EQUIPO</strong></h5>
+    <dl class="dl-horizontal">
+        <!--Equipo-->
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EquipmentDTO.Cod_Equipment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EquipmentDTO.Cod_Equipment)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EquipmentDTO.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EquipmentDTO.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EquipmentDTO.Position)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EquipmentDTO.Position)
+        </dd>
+    </dl>
+    <hr />
+    <h5><strong>COMPONENTE</strong></h5>
+    <dl class="dl-horizontal">
+         
+        <dt>
+            @Html.DisplayNameFor(model => model.Cod_Component)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.Cod_Component)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Series)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Series)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Material)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Material)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Utility)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Utility)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.active)
+        </dd>
+
+    </dl>
+
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+</div>

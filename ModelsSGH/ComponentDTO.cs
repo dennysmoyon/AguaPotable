@@ -19,7 +19,7 @@ namespace ModelsSGH
         [StringLength(100, MinimumLength = 1, ErrorMessage = "{0} tiene que estar entre {2} y {1} caracteres.")]
         public string Description { get; set; }
         [Display(Name = "Serie")]
-        public string Serie { get; set; }
+        public string Series { get; set; }
         [Display(Name = "Marca")]
         public string Mark { get; set; }
         [Display(Name = "Material")]

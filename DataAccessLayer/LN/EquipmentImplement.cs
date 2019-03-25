@@ -52,7 +52,7 @@ namespace DataAccessLayer.LN
                     equipDto = new EquipmentDTO();
                     equipDto = Mapper.Map<EquipmentDTO>(equip);
                     equipDto.treatmentUnitDto = Mapper.Map<TreatmentUnitDTO>(equip.TreatmentUnit);
-                    equipDto.LstComponent = Mapper.Map<IEnumerable<ComponentDTO>>(equip.Component).ToList();
+                    equipDto.LstComponent = Mapper.Map<IEnumerable<ComponentDTO>>(equip.Component.Where(cp => cp.active == true)).ToList();
                     lstEquimentDTO.Add(equipDto);
                     
                 }
