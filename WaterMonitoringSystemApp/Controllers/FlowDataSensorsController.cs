@@ -10,17 +10,20 @@ using WaterMonitoringSystemApp.Reports;
 
 namespace WaterMonitoringSystemApp.Controllers
 {
+    [AllowAnonymous]
     public class FlowDataSensorsController : Controller
     {
 
         public IData_Sensors _dataSensors;
+        public IEquipment _equipment;
 
-        public FlowDataSensorsController(IData_Sensors dataSensors)
+        public FlowDataSensorsController(IData_Sensors dataSensors, IEquipment equipment)
         {
             _dataSensors = dataSensors;
+            _equipment = equipment;
         }
 
-        public FlowDataSensorsController() : this( new Data_Sensors())
+        public FlowDataSensorsController() : this( new Data_Sensors(), new EquipmentImplement())
         {
         }
         // GET: FlowDataSensors
@@ -34,8 +37,11 @@ namespace WaterMonitoringSystemApp.Controllers
             return View();
         }
 
-        public ActionResult Monitor() {
-            return View();
+        public ActionResult Monitor(int id) {
+
+            ViewBag.idEquipment = id;
+            var equipment = _equipment.GetEquipment(id);
+            return View(equipment);
         }
 
         /*public ActionResult reportSensors() {
@@ -84,8 +90,8 @@ namespace WaterMonitoringSystemApp.Controllers
         /// Retorna Un JSON del historial de datos de lectura de los sensores.
         /// </summary>
         /// <returns></returns>
-        public ActionResult getFlowDataSensors() {
-            var lstDataSensors = _dataSensors.getDataSensors();
+        public ActionResult getFlowDataSensors(int id) {
+            var lstDataSensors = _dataSensors.getDataSensors(id);
             return Json(lstDataSensors, JsonRequestBehavior.AllowGet);
         }
     }

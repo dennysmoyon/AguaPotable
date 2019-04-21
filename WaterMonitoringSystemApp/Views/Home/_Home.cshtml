@@ -3,18 +3,141 @@
  
 </style>
 
-<div class="content-home">
-</div>
-<div class="row">
-    <div class="col-md-12 col-xs-12">
-  
-        <h1 class="title" ><strong>CYNA</strong> <small>CALIDAD Y NIVELES DE AGUA</small></h1>
-    </div>  
+@*<div class="content-home">
+</div>*@
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="miConfirm">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="mySmallModalLabel">Proceso de Monitoreo</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+
+                    <h5>Unidad de Tramiento :<span id="codUT"></span></h5>
+                </div>
+                <div class="form-group">
+                    <label for="sel1">Seleccione un equipo</label>
+                    <select class="form-control required" id="equipment" onchange = "setValue(this.value)" data-val="true" name="DownloadValuesId">
+                        <option value="">Seleccione un Equipo</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button id="btnBuscarEquip" class="btn btn-primary" type="button">Monitorear</button>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="row">
+<div class="col-md-12 col-xs-12 content-home"  style="background-color : #207ce5">
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div class="title-content">
+                <h1 class="title"><strong>SAIR</strong> <small>SUPERVISOR DE AGUA POTABLE CON RED INALÁMBRICA</small></h1>
+            </div>
+        </div>  
+    </div>
+    <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+            <div class="content-home-index">
+                <div class="col-md-12">
+                  <div class="col-md-6">
+                      <img class="img-circle img-responsive img-personal" src="~/Content/images/water_5.jpg"/>
+                      <p class="text-muted">
+                          Tener agua de calidad es un factor muy importante ya que incide directamente en la salud y el bienestar humano, la calidad de los alimentos, las actividades económicas, etc. También se considera un factor influyente en la determinación de la pobreza o riqueza de un país.
+                      </p>
+                  </div>
+                  <div class="col-md-6">
+                      <img class="img-circle img-responsive img-personal" src="~/Content/images/water_7.png"/>
+                      <p class="text-muted">
+                          SAIR es un sistema autónomo e inteligente capaz de medir los principales parámetros de calidad físicos y químicos del agua potable en los tanques de reserva, estos son: el Potencial de Hidrógeno (pH), Oxígeno Disuelto  (OD), Potencial Óxido Reducción (ORP), Conductividad  eléctrica (EC). Adicionalmente cuenta con un sensor que permite medir el nivel del agua en el que se encuentra el tanque.
+                      </p>
+                  </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+        <div class="col-md-offset-1 col-md-5">
+
+                <div class="content-home-index col-md-12">
+
+                <div class="table-responsive full-table">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Parámetro</th>
+                                <th scope="col">Como</th>
+                                <th scope="col">Unidad</th>
+                                <th scope="col">Limite</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Oxígeno Disuelto</th>
+                                <td>O.D.</td>
+                                <td>mg/l</td>
+                                <td>No menor al 80% del oxígeno de saturación y no menor a 6mg/l</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Potencial de Hidrógeno</th>
+                                <td>pH</td>
+                                <td>Potencial de hidrógeno</td>
+                                <td>6-9</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Potencial Óxido Reducción</th>
+                                <td>ORP</td>
+                                <td>mV</td>
+                                <td>>650</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Conductividad eléctrica</th>
+                                <td>CE</td>
+                                <td>Us/cm</td>
+                                <td>>50-1500</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+                
+
+        </div>
+        <div class="col-md-5">
+            <div class="content-home-index content-map">
+                       <div id="map"></div>
+             </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+@*<div class="row" style="background-color : #207ce5">
     <div class="col-md-12 col-xs-12">
-        <div class="content-cards">
+         <div class="title-content">
+             <h1 class="title" ><strong>SAIR</strong> <small>SUPERVISOR DE AGUA POTABLE CON RED INALÁMBRICA</small></h1>
+         </div>    
+    </div>*@  
+
+
+
+@*</div>
+
+<div class="row">*@
+
+
+    @*<div class="col-md-12 col-xs-12">*@
+
+
+        @*<div class="content-cards">
       
             <div class="col-md-offset-1 col-md-2 ">
                 <div class="card-home">
@@ -107,24 +230,14 @@
                     </div>
                 </div>
             </div>
+        </div>*@
+
+        @*<div  class="col-md-offset-1 col-md-10">
+            <div class="content-home-index">
+
+            </div>
         </div>
       </div> 
-</div> 
+</div>*@ 
 
-<script type="text/javascript">
-
-    function animatedBtn(even) {
-        var icon = $(even).find(">:first-child");
-        var inclass = icon.hasClass("card-icon");
-        if (inclass) {
-            icon[0].classList.remove("card-icon");
-            icon.addClass("card-icon-reverse");
-            console.log("true", icon);
-        } else {
-            icon[0].classList.remove("card-icon-reverse");
-            icon.addClass("card-icon");
-            console.log("false", icon);
-        }
-    }
-</script>
 <!-- /ko -->

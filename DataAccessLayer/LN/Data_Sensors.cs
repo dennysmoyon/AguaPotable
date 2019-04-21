@@ -33,6 +33,7 @@ namespace DataAccessLayer
                     dataSensors.Data_Sensor_PH = data.Data_Sensor_PH;
                     dataSensors.Data_Sensor_WATER_LEVEL = data.Data_Sensor_LW;
                     dataSensors.Date_Register = DateTime.Now;
+                    dataSensors.Id_Equipment = data.Id_Equipment;
                     dbContext.FlowDataSensors.Add(dataSensors);
                     dbContext.SaveChanges();
                     int id = dataSensors.Id;
@@ -116,6 +117,51 @@ namespace DataAccessLayer
                 throw ex;
             }
             
+        }
+
+        public List<DataFlowSensorsDTO> getDataSensors(int idEquipment) {
+            try
+            {
+                using (var dbContext = new DataFlowSensorsDBEntities())
+                {
+
+                    var listDataSensors = dbContext.FlowDataSensors.Where(flw => flw.Id_Equipment == idEquipment).OrderByDescending((x) => x.Date_Register);
+                    List<DataFlowSensorsDTO> lstDFS = new List<DataFlowSensorsDTO>();
+                    DataFlowSensorsDTO itemDFS = null;
+                    foreach (var dataSensor in listDataSensors)
+                    {
+                        itemDFS = new DataFlowSensorsDTO();
+                        itemDFS.Data_Sensor_CT = dataSensor.Data_Sensor_CONDUCTIVITY;
+                        itemDFS.Data_Sensor_OD = dataSensor.Data_Sensor_DISOLVED_OXYGEN;
+                        itemDFS.Data_Sensor_ORP = dataSensor.Data_Sensor_ORP;
+                        itemDFS.Data_Sensor_PH = dataSensor.Data_Sensor_PH;
+                        itemDFS.Data_Sensor_LW = dataSensor.Data_Sensor_WATER_LEVEL;
+                        itemDFS.Date_Register = dataSensor.Date_Register;
+                        itemDFS._now = false;
+                        if (dataSensor.Date_Register == null)
+                        {
+                            itemDFS.hours = null;
+                        }
+                        else
+                        {
+                            var dateDb = (DateTime)dataSensor.Date_Register;
+                            itemDFS.hours = dateDb.Hour.ToString() + ":" + dateDb.Minute.ToString() + ":" + dateDb.Second.ToString();
+                            if (dateDb.Day == DateTime.Now.Day && dateDb.Month == DateTime.Now.Month && dateDb.Year == DateTime.Now.Year)
+                                itemDFS._now = true;
+                        }
+
+
+                        lstDFS.Add(itemDFS);
+                    }
+
+                    return lstDFS;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
 
         public List<DataFlowSensorsDTO> filterReportSensors(DateTime _dateSince, DateTime _dateUntil) {

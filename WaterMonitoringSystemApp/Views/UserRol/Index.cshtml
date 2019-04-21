@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ModelsSGH.UsersDTO>
+
+@{
+    ViewBag.Title = "Roles";
+}
+
+<div class="row row-tittle">
+    <div class="col-md-12">
+        <div class="col-md-8 col-xs-9">
+            <h3>Modificación de Roles</h3>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Hometown)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th style="text-align:center">Rol</th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hometown)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                <div class="col-md-12 col-xs-12">
+                    <div class="col-md-8 col-xs-8">
+                        @Html.DropDownListFor(rol => item.IdRole, new SelectList(item.ListaRoles, "id", "Name"), item.DescriptionRole, new { @class = "form-control changeRole" })
+                        <input type="hidden" class="idUser" value="@item.Id"/>
+                    </div>
+                    <div class="col-md-4 col-xs-4">
+                        <div class="SaveRol">
+
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    }
+
+    </table>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/personal/UserRole.js")
+}

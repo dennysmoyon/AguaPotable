@@ -1,10 +1,13 @@
-﻿
+﻿@model ModelsSGH.EquipmentDTO
+
 @{
     ViewBag.Title = "Monitor";
 }
 
 <!-- ko with: home -->
+<p class="bg-primary" style="padding:1.5rem"><strong>EQUIPO:</strong> @Model.Cod_Equipment @Model.Description  | <strong>UNIDAD DE TRATAMIENTO:</strong> @Model.treatmentUnitDto.Cod_Tu </p>
 
+<input type="hidden"  id="idEquipment" value="@Model.Id_Equipment"/>
 <div class="modal fade" tabindex="-1" role="dialog" id="modalChartsFull">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">

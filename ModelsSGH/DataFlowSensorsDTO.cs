@@ -30,7 +30,7 @@ namespace ModelsSGH
         public decimal Data_Sensor_ORP { get; set; }
         [Display(Name = "Fecha de registro")]
         public DateTime? Date_Register { get; set; }
-
+        public int Id_Equipment { get; set; }
         public string hours { get; set; }
         public bool _now { get; set; }
 
@@ -45,5 +45,8 @@ namespace ModelsSGH
                             set { this.Data_Sensor_CT = value; }}
         public decimal ORP { get { return this.Data_Sensor_ORP; }
                              set { this.Data_Sensor_ORP = value;}}
+        public int IDEQ { get { return this.Id_Equipment; }
+                          set { this.Id_Equipment = value; }
+                        }
     }
 }

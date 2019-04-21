@@ -27,6 +27,8 @@ namespace DataAccessLayer.LN
             using (var dbContext = new DataFlowSensorsDBEntities()) {
                 var treatmentUnit = dbContext.TreatmentUnit.First(tu => tu.Cod_Tu == codTu);
                 treatUnitDTO = Mapper.Map<TreatmentUnitDTO>(treatmentUnit);
+                treatUnitDTO.Equipments = new List<EquipmentDTO>();
+                treatUnitDTO.Equipments = Mapper.Map<ICollection<EquipmentDTO>>(treatmentUnit.Equipment.Where(cp => cp.active == true)).ToList();
                 return treatUnitDTO;
             }
         }
@@ -38,6 +40,8 @@ namespace DataAccessLayer.LN
             {
                 var treatmentUnit = dbContext.TreatmentUnit.First(tu => tu.Id_Tu == idTu);
                 treatUnitDTO = Mapper.Map<TreatmentUnitDTO>(treatmentUnit);
+                treatUnitDTO.Equipments = new List<EquipmentDTO>();
+                treatUnitDTO.Equipments = Mapper.Map<ICollection<EquipmentDTO>>(treatmentUnit.Equipment.Where(cp => cp.active == true)).ToList();
                 return treatUnitDTO;
             }
         }

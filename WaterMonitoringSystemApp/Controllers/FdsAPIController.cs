@@ -14,20 +14,25 @@ namespace WaterMonitoringSystemApp.Controllers
     public class FdsAPIController : ApiController
     {
         IData_Sensors _dfsl;
-        public FdsAPIController(IData_Sensors dfs)
+        ITreatmentUnit _tu;
+        public FdsAPIController(IData_Sensors dfs, ITreatmentUnit tu)
         {
             _dfsl = dfs;
+            _tu = tu;
         }
 
-        public FdsAPIController() : this(new Data_Sensors())
+        public FdsAPIController() : this(new Data_Sensors(), new TreatmentUnitImplement())
         {
 
         }
 
         // GET: api/FlowDataSensorsAPI
-        public IEnumerable<string> Get()
+        public string Get()
         {
-            return new string[] { "value1", "value2" };
+            var tU = _tu.GetTreatmentUnits();
+            string dataJsonTu = JsonConvert.SerializeObject(tU, Formatting.Indented);
+            //return new string[] { "value1", "value2" };
+            return dataJsonTu;
         }
 
         // GET: api/FlowDataSensorsAPI/5

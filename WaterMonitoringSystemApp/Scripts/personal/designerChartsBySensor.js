@@ -13,6 +13,7 @@ var _dataSourceFullChars = {};
 var _category = [];
 var _data = [];
 var _dateLabel = "";
+var idEquipment = "";
 
 /*
 *Escucha eventos del socket
@@ -26,6 +27,9 @@ window.onload = () => {
 
                 console.log("Its  this conected ", event.data);
             } else {
+
+                idEquipment = $("#idEquipment").val();
+                console.log("idEquip", idEquip);
 
                 var jsonData = JSON.parse(event.data);
                 console.log("_dataSourceLW", _dataSourceLW);
@@ -335,9 +339,11 @@ function initFullCharts(dataPh, dataOrp, dataCt, dataOd, dataLw) {
 
 /*Llama al metodo de base de datos*/
 function getDataSensorsDB(typeFill) {
-    $.getJSON('/FlowDataSensors/getFlowDataSensors/', (dataSnDB) => {
+    idEquipment = $("#idEquipment").val();
+    console.log("IdEquipment.......", idEquipment);
+    $.getJSON('/FlowDataSensors/getFlowDataSensors/'+idEquipment, (dataSnDB) => {
 
-        console.log("LLega los datos de los sensores");
+        console.log("LLega los datos de los sensores", dataSnDB);
         
         _category = [];
         _data = [];
@@ -364,14 +370,16 @@ function getDataSensorsDB(typeFill) {
             _dataLw.push({"value" : dataSnDB[item].Data_Sensor_LW});
         }
 
-        if (_dateLabel == "") {
+        if (_dateLabel == "" && dataSnDB.length > 0) {
             _dateLabel = getDateFormat(new Date(parseInt(dataSnDB[0].Date_Register.replace("/Date(", "").replace(")/", ""), 10)));
         }
 
 
         //establecemos los alores de los graficos
         initDataSourceOX(_category, _data);
-        setChartLW(dataSnDB[0].Data_Sensor_LW);
+        if (dataSnDB.length > 0) {
+            setChartLW(dataSnDB[0].Data_Sensor_LW);
+        }
         initDataSourceORP(_category, _dataOrp);
         initDataSourcePH(_category, _dataPh);
         initDataSourceCT(_category, _dataCt);

@@ -31,6 +31,18 @@ namespace WaterMonitoringSystemApp
                 }
             );
 
+            routes.MapRoute(
+                name: "addRole",
+                url: "UserRol/addRole/{idUser}/{idRol}/",
+                defaults: new
+                {
+                    controller = "UserRol",
+                    action = "addRole",
+                    idUser = UrlParameter.Optional,
+                    idRol = UrlParameter.Optional
+                }
+            );
+
         }
     }
 }

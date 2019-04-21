@@ -110,8 +110,12 @@
     <Compile Include="LN\IComponent.cs" />
     <Compile Include="LN\IData_Sensors.cs" />
     <Compile Include="LN\IEquipment.cs" />
+    <Compile Include="LN\IRol.cs" />
     <Compile Include="LN\ITreatmentUnit.cs" />
+    <Compile Include="LN\IUsers.cs" />
+    <Compile Include="LN\RolImplement.cs" />
     <Compile Include="LN\TreatmentUnitImplement.cs" />
+    <Compile Include="LN\UsersImplement.cs" />
     <Compile Include="LN\Utilitis.cs" />
     <Compile Include="LN\WebSocketImplement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

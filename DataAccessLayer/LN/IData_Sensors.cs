@@ -10,6 +10,7 @@ namespace DataAccessLayer.LN
     public interface IData_Sensors
     {
         List<DataFlowSensorsDTO> getDataSensors();
+        List<DataFlowSensorsDTO> getDataSensors(int idEquipment);
         List<DataFlowSensorsDTO>  filterReportSensors(DateTime _dateSince, DateTime _dateUntil);
         DataFlowSensorsDTO addDataSensors(DataFlowSensorsDTO data);
 

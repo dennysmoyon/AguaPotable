@@ -259,7 +259,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeController.cs" />
+    <Compile Include="Controllers\TreatmentUnitAPIController.cs" />
     <Compile Include="Controllers\TreatmentUnitController.cs" />
+    <Compile Include="Controllers\UserRolController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -289,17 +291,25 @@
     <Content Include="Content\datepicker.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\images\ct.png" />
+    <Content Include="Content\images\error.png" />
     <Content Include="Content\images\font-5.jpg" />
-    <Content Include="Content\images\font-4.jpg" />
-    <Content Include="Content\images\font-3.jpg" />
-    <Content Include="Content\images\font-2.jpg" />
     <Content Include="Content\images\font-1.jpg" />
     <Content Include="Content\images\font-6.jpg" />
+    <Content Include="Content\images\iconTu.png" />
+    <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\lw.png" />
     <Content Include="Content\images\od.png" />
     <Content Include="Content\images\orp.png" />
     <Content Include="Content\images\ph.jpg" />
     <Content Include="Content\images\ph.png" />
+    <Content Include="Content\images\success2.png" />
+    <Content Include="Content\images\water_1.png" />
+    <Content Include="Content\images\water_2.png" />
+    <Content Include="Content\images\water_3.png" />
+    <Content Include="Content\images\water_4.png" />
+    <Content Include="Content\images\water_5.jpg" />
+    <Content Include="Content\images\water_6.jpg" />
+    <Content Include="Content\images\water_7.png" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -463,9 +473,11 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\personal\Equipment.js" />
     <Content Include="Scripts\personal\EquipmentUtils.js" />
+    <Content Include="Scripts\personal\HomeMaps.js" />
     <Content Include="Scripts\personal\RTDataFlowSensors.js" />
     <Content Include="Scripts\personal\TreatmentUnit.js" />
     <Content Include="Scripts\personal\TreatmentUnitUtils.js" />
+    <Content Include="Scripts\personal\UserRole.js" />
     <Content Include="Scripts\personal\WebsocketConect.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
@@ -550,6 +562,7 @@
     <Content Include="Views\Component\DetailCmp.cshtml" />
     <Content Include="Views\Component\UpdateCmp.cshtml" />
     <Content Include="Views\Component\DeleteCmp.cshtml" />
+    <Content Include="Views\UserRol\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

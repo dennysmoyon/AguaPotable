@@ -31,6 +31,7 @@ namespace ModelsSGH
         [Display(Name ="Capacidad")]
         public  float Capacity { get; set; }
 
+        public List<EquipmentDTO> Equipments { get; set; }
         public bool  active { get; set; }
 
     }
