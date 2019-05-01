@@ -10,7 +10,7 @@ using WaterMonitoringSystemApp.Reports;
 
 namespace WaterMonitoringSystemApp.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     public class FlowDataSensorsController : Controller
     {
 
@@ -44,36 +44,18 @@ namespace WaterMonitoringSystemApp.Controllers
             return View(equipment);
         }
 
-        /*public ActionResult reportSensors() {
-            var dataDFS = _dataSensors.getDataSensors();
-            DataSensorsReport dsfReport = new DataSensorsReport();
-            byte[] abyteReport = dsfReport.PrepareReport(dataDFS);
-            return File(abyteReport, "application/pdf");
-        }*/
-
-        public ActionResult reportSensors(string dateSince, string dateUntil)
+        public ActionResult reportSensors(string dateSince, string dateUntil, int idEq)
         {
             try
             {
                 DateTime _dateSince = DateTime.ParseExact(dateSince, "dd-MM-yyyy", CultureInfo.InvariantCulture);
                 DateTime _dateUntil = DateTime.ParseExact(dateUntil, "dd-MM-yyyy", CultureInfo.InvariantCulture);
 
-                //if (id == null) {
-                //    id = "";
-                //    dates = new string[4];                   
-                //    dates[0] = "";
-                //    dates[1] = "";
-                //}
-                //else {
-                //    dates = id.Split('!');
-                //_dateSince = Convert.ToDateTime(dateSince);
-                //_dateUntil = Convert.ToDateTime(dateUntil);
-                //}
-
-
-                var dataDFS = _dataSensors.filterReportSensors(_dateSince, _dateUntil);
+ 
+                var dataDFS = _dataSensors.filterReportSensors(_dateSince, _dateUntil, idEq);
                 DataSensorsReport dsfReport = new DataSensorsReport();
-                byte[] abyteReport = dsfReport.PrepareReport(dataDFS, dateSince, dateUntil);
+                var equipment = _equipment.GetEquipment(idEq);
+                byte[] abyteReport = dsfReport.PrepareReport(dataDFS, dateSince, dateUntil, equipment);
                 return File(abyteReport, "application/pdf");
 
 

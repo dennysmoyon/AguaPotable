@@ -21,7 +21,7 @@ namespace WaterMonitoringSystemApp.Reports
         List<DataFlowSensorsDTO> _lstDataFlowSen = new List<DataFlowSensorsDTO>();
         #endregion
 
-        public byte[] PrepareReport(List<DataFlowSensorsDTO> lstDataFlowSen, string dateSince, string dateUntil) {
+        public byte[] PrepareReport(List<DataFlowSensorsDTO> lstDataFlowSen, string dateSince, string dateUntil, EquipmentDTO equipment) {
             _lstDataFlowSen = lstDataFlowSen;
 
             #region
@@ -36,17 +36,17 @@ namespace WaterMonitoringSystemApp.Reports
             _pdfTable.SetWidths(new float[] {10f, 20f, 20f, 20f, 20f, 20f, 30f });
             #endregion
 
-            this.ReportHeader(dateSince, dateUntil);
+            this.ReportHeader(dateSince, dateUntil, equipment);
             this.ReportBody();
-            _pdfTable.HeaderRows = 3;
+            _pdfTable.HeaderRows = 4;
             _document.Add(_pdfTable);
             _document.Close();
             return _memoryStream.ToArray();
         }
 
-        private void ReportHeader(string dateSince, string dateUntil) {
+        private void ReportHeader(string dateSince, string dateUntil, EquipmentDTO equipment) {
             _fontStyle = FontFactory.GetFont("Tahoma", 11f, 1);
-            _pdfPCell = new PdfPCell(new Phrase("CALIDAD Y NIVELES DE AGUA (CYNA)"));
+            _pdfPCell = new PdfPCell(new Phrase("SAIR SUPERVISOR DE AGUA POTABLE CON RED INALÁMBRICA"));
             _pdfPCell.Colspan = _totalColumns;
             _pdfPCell.HorizontalAlignment = Element.ALIGN_CENTER;
             _pdfPCell.Border = 0;
@@ -54,9 +54,17 @@ namespace WaterMonitoringSystemApp.Reports
             _pdfPCell.ExtraParagraphSpace = 0;
             _pdfTable.AddCell(_pdfPCell);
 
+            _fontStyle = FontFactory.GetFont("Tahoma", 8f, 1);
+            _pdfPCell = new PdfPCell(new Phrase("Equipo: " + equipment.Cod_Equipment + "Descripcion: " + equipment.Description));
+            _pdfPCell.Colspan = _totalColumns;
+            _pdfPCell.HorizontalAlignment = Element.ALIGN_CENTER;
+            _pdfPCell.Border = 0;
+            _pdfPCell.BackgroundColor = BaseColor.WHITE;
+            _pdfPCell.ExtraParagraphSpace = 0;
+            _pdfTable.AddCell(_pdfPCell);
 
-            _fontStyle = FontFactory.GetFont("Tahoma", 9f, 1);
-            _pdfPCell = new PdfPCell(new Phrase("Analisis de agua desde: "+ dateSince + " hasta: "+ dateUntil));
+            _fontStyle = FontFactory.GetFont("Tahoma", 7f, 1);
+            _pdfPCell = new PdfPCell(new Phrase("Analisis   desde: "+ dateSince + " hasta: "+ dateUntil));
             _pdfPCell.Colspan = _totalColumns;
             _pdfPCell.HorizontalAlignment = Element.ALIGN_LEFT;
             _pdfPCell.Border = 0;
@@ -72,6 +80,8 @@ namespace WaterMonitoringSystemApp.Reports
             _pdfPCell.BackgroundColor = BaseColor.WHITE;
             _pdfPCell.ExtraParagraphSpace = 0;
             _pdfTable.AddCell(_pdfPCell);
+
+
         }
 
         private void ReportBody() {

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3abdb8b2e19040e1bafd03dbd46b3ca3" Name="Diagram1" ZoomLevel="86">
+      <Diagram DiagramId="3abdb8b2e19040e1bafd03dbd46b3ca3" Name="Diagram1" ZoomLevel="83">
         <EntityTypeShape EntityType="DataFlowSensorsDBModel.FlowDataSensors" Width="1.5" PointX="0.5" PointY="0.75" />
         <EntityTypeShape EntityType="DataFlowSensorsDBModel.AspNetRoles" Width="1.5" PointX="8.125" PointY="0.5" />
         <EntityTypeShape EntityType="DataFlowSensorsDBModel.AspNetUserClaims" Width="2" PointX="7.875" PointY="3.625" />
@@ -19,6 +19,7 @@
         <AssociationConnector Association="DataFlowSensorsDBModel.FK__Component__Id_Eq__2B3F6F97" />
         <AssociationConnector Association="DataFlowSensorsDBModel.FK__Equipment__Posit__276EDEB3" />
         <AssociationConnector Association="DataFlowSensorsDBModel.FK__FlowDataS__Id_Eq__2C3393D0" />
+        <AssociationConnector Association="DataFlowSensorsDBModel.AspNetUserRoles1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -22,7 +22,7 @@ namespace ModelsSGH
         [Display(Name = "Medida")]
         public string Size { get; set; }
 
-        [Display(Name = "Descripcion")]
+        [Display(Name = "Descripción")]
         [StringLength(50, MinimumLength = 1, ErrorMessage = "{0} tiene que estar entre {2} y {1} caracteres.")]
         [Required(ErrorMessage = "Debe ingresar un descripción")]
         public string Description { get; set; }

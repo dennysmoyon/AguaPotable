@@ -24,6 +24,7 @@ namespace WaterMonitoringSystemApp.Controllers
 
         }
         // GET: UserRol
+        [Authorize(Roles = "Administrador")]
         public ActionResult Index() 
         {
             var users = _user.getUsers();

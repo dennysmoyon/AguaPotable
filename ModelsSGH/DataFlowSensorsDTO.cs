@@ -33,6 +33,7 @@ namespace ModelsSGH
         public int Id_Equipment { get; set; }
         public string hours { get; set; }
         public bool _now { get; set; }
+        public EquipmentDTO EquipmentDTO { get; set; }
 
         /**SHORT FIELDS**/
         public decimal PH { get { return this.Data_Sensor_PH; }

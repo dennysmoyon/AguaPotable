@@ -11,7 +11,7 @@ namespace DataAccessLayer.LN
     {
         List<DataFlowSensorsDTO> getDataSensors();
         List<DataFlowSensorsDTO> getDataSensors(int idEquipment);
-        List<DataFlowSensorsDTO>  filterReportSensors(DateTime _dateSince, DateTime _dateUntil);
+        List<DataFlowSensorsDTO>  filterReportSensors(DateTime _dateSince, DateTime _dateUntil, int cod_eq);
         DataFlowSensorsDTO addDataSensors(DataFlowSensorsDTO data);
 
 

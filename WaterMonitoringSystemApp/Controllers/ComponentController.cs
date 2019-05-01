@@ -25,6 +25,8 @@ namespace WaterMonitoringSystemApp.Controllers
         {
 
         }
+
+        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             return View();

@@ -91,7 +91,7 @@ function loadModal(codigoUt, idUt) {
 
             $("#equipment").empty();
             option = new Option("Seleccione un equipo", "",true,true);
-            $(option).html(text);
+            $(option).html("Seleccione un equipo");
             $("#equipment").append(option);
             _idUt = idUt;
 

@@ -9,13 +9,13 @@
         <li class="caja-menu">
             @Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: new { area = "" }, htmlAttributes: new { title = "Manage" })
         </li>
-        <li><a href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">Cerrar sesión</a></li>
+        <li class="caja-menu"><a href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">Cerrar sesión</a></li>
     </ul>
     }
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right caja-menu">
         <li class="caja-menu">@Html.ActionLink("Registrarse", "Register", "Account", routeValues: new { area = "" }, htmlAttributes: new { id = "registerLink" })</li>
         <li class="caja-menu">@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: new { area = "" }, htmlAttributes: new { id = "loginLink" })</li>
     </ul>

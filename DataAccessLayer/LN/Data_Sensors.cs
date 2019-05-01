@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ModelsSGH;
+using AutoMapper;
+
 
 namespace DataAccessLayer
 {
@@ -37,6 +39,7 @@ namespace DataAccessLayer
                     dbContext.FlowDataSensors.Add(dataSensors);
                     dbContext.SaveChanges();
                     int id = dataSensors.Id;
+                    int idEquipment = data.Id_Equipment;
 
                     //Reasignacion.
                     dataSensors = dataSensors = new FlowDataSensors();
@@ -48,6 +51,8 @@ namespace DataAccessLayer
                     data.Data_Sensor_ORP = dataSensors.Data_Sensor_ORP;
                     data.Data_Sensor_PH = dataSensors.Data_Sensor_PH;
                     data.Date_Register = dataSensors.Date_Register;
+                    data.EquipmentDTO = Mapper.Map<EquipmentDTO>(dbContext.Equipment.FirstOrDefault(eq => eq.Id_Equipment == idEquipment));
+
                     if (dataSensors.Date_Register == null)
                     {
                         data.hours = null;
@@ -94,6 +99,7 @@ namespace DataAccessLayer
                         itemDFS.Data_Sensor_PH = dataSensor.Data_Sensor_PH;
                         itemDFS.Data_Sensor_LW = dataSensor.Data_Sensor_WATER_LEVEL;
                         itemDFS.Date_Register = dataSensor.Date_Register;
+                        itemDFS.EquipmentDTO = Mapper.Map<EquipmentDTO>(dataSensor.Equipment);
                         itemDFS._now = false;
                         if (dataSensor.Date_Register == null)
                         {
@@ -137,6 +143,7 @@ namespace DataAccessLayer
                         itemDFS.Data_Sensor_PH = dataSensor.Data_Sensor_PH;
                         itemDFS.Data_Sensor_LW = dataSensor.Data_Sensor_WATER_LEVEL;
                         itemDFS.Date_Register = dataSensor.Date_Register;
+                        itemDFS.EquipmentDTO = Mapper.Map<EquipmentDTO>(dataSensor.Equipment);
                         itemDFS._now = false;
                         if (dataSensor.Date_Register == null)
                         {
@@ -164,12 +171,12 @@ namespace DataAccessLayer
 
         }
 
-        public List<DataFlowSensorsDTO> filterReportSensors(DateTime _dateSince, DateTime _dateUntil) {
+        public List<DataFlowSensorsDTO> filterReportSensors(DateTime _dateSince, DateTime _dateUntil, int cod_eq) {
 
             using (var dbContext =  new DataFlowSensorsDBEntities()) {
 
                 var lstDataReports = from dfs in dbContext.FlowDataSensors
-                                     where dfs.Date_Register >= _dateSince && dfs.Date_Register <= _dateUntil
+                                     where dfs.Id_Equipment == cod_eq && dfs.Date_Register >= _dateSince && dfs.Date_Register <= _dateUntil
                                      select dfs;
 
                 List<DataFlowSensorsDTO> lstDFS = new List<DataFlowSensorsDTO>();
@@ -183,6 +190,7 @@ namespace DataAccessLayer
                     itemDFS.Data_Sensor_PH = dataSensor.Data_Sensor_PH;
                     itemDFS.Data_Sensor_LW = dataSensor.Data_Sensor_WATER_LEVEL;
                     itemDFS.Date_Register = dataSensor.Date_Register;
+                    itemDFS.EquipmentDTO = Mapper.Map<EquipmentDTO>(dataSensor.Equipment);
                     itemDFS._now = false;
                     if (dataSensor.Date_Register == null)
                     {

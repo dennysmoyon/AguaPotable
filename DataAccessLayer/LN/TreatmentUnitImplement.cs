@@ -49,9 +49,16 @@ namespace DataAccessLayer.LN
         public List<TreatmentUnitDTO> GetTreatmentUnits()
         {
             List<TreatmentUnitDTO> lstTreatUnitDTO = new List<TreatmentUnitDTO>();
+            TreatmentUnitDTO _ut = null;
             using (var dbContext = new DataFlowSensorsDBEntities()) {
                 var lstTu = dbContext.TreatmentUnit.Where(qr => qr.active == true);
-                lstTreatUnitDTO = Mapper.Map<IEnumerable<TreatmentUnitDTO>>(lstTu).ToList();
+                foreach(var ut in lstTu)
+                {
+                    _ut = new TreatmentUnitDTO();
+                    _ut = Mapper.Map<TreatmentUnitDTO>(ut);
+                    _ut.Equipments = Mapper.Map<IEnumerable<EquipmentDTO>>(ut.Equipment).ToList();
+                    lstTreatUnitDTO.Add(_ut);
+                }
             }
             return lstTreatUnitDTO;
         }

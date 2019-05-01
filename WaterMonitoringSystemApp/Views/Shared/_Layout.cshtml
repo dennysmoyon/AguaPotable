@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title: mi aplicación ASP.NET</title>
+    <title>@ViewBag.Title: SAIR</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @Styles.Render("~/Content/css")
@@ -26,18 +26,19 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @*<li class="caja-menu">@Html.ActionLink("Monitor", "Monitor", "FlowDataSensors", new { area = "" }, null)</li>*@
-                    @*<li>@Html.ActionLink("API", "Index", "Help", new { area = "HelpPage" }, null)</li>*@
-                    <li class="dropdown caja-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administración <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("index","TreatmentUnit")">Gestión Unidades de Tratamiento</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="@Url.Action("index","Equipment")">Gestión Equipos</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="@Url.Action("index","UserRol")">Asignación de Roles</a></li>
-                        </ul>
-                    </li>
+                 
+                    @if(User.IsInRole("Administrador")) {
+                        <li class="dropdown caja-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administración <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("index","TreatmentUnit")">Gestión Unidades de Tratamiento</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="@Url.Action("index","Equipment")">Gestión Equipos</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="@Url.Action("index","UserRol")">Asignación de Roles</a></li>
+                            </ul>
+                        </li>
+                    }
                     <li class="caja-menu">@Html.ActionLink("Reporte", "Index", "FlowDataSensors", new { area = "" }, null)</li>
                  </ul>
                 @Html.Partial("_LoginPartial")
@@ -54,7 +55,7 @@
 @if (Request.IsAuthenticated)
 {
     <footer style="padding : 2rem;">
-        <p>&copy; @DateTime.Now.Year - <i>Todos los derechos reservados</i> Autoria: Cristian F. Moyón R. & Dayana Ordoñes, Participación: Horizon Technology Solutions</p>
+        <p>&copy; @DateTime.Now.Year - <i>Todos los derechos reservados</i> Autoria: Cristian Moyón & Dayana Ordoñez, <i class="glyphicon glyphicon-phone"></i>Contactos: 0983459435 - 0995940109</p>
     </footer>
 }
 

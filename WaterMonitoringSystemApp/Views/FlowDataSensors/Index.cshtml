@@ -29,14 +29,29 @@
 
 <div class="row breadcrumb">
     <div class="col-lg-12 col-xs-12 col-md-12">
-        <h2>Flujo de datos de sensores</h2>
+        <h4>FLUJO DE DATOS DE LOS SENSORES</h4>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-12">
-        <div class="col-md-offset-3 col-md-3 col-xs-12">
+        <div class="col-md-offset-2 col-md-2 col-xs-12 form-group">
+            <label for="sel1">Seleccione la UT.</label>
+            <select class="form-control required" id="treatment" onchange="setValueUt(this.value)" data-val="true" name="DownloadValuesId">
+                <option value="">Seleccione un Equipo</option>
+            </select>
+        </div>
+
+        <div class="col-md-2 col-xs-12 form-group">
+            <label for="sel2">Seleccione un equipo</label>
+            <select class="form-control required" id="equipment" onchange="setValueEq(this.value)" data-val="true" name="DownloadValuesId" disabled>
+                <option value="">Seleccione un Equipo</option>
+            </select>
+        </div>
+
+        <div class="col-md-2 col-xs-12">
             <div class="form-group">
+                <label for="sel3">Fecha desde</label>
                 <div class='input-group date' id='datetimepicker1'>
                     <input type='text' class="form-control" placeholder="dd-mm-yyyy"  id="datePick1"/>
                     <span class="input-group-addon">
@@ -46,8 +61,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3 col-xs-12 col-">
+        <div class="col-md-2 col-xs-12">
             <div class="form-group">
+                <label for="sel3">Fecha hasta</label>
                 <div class='input-group date' id='datetimepicker2'>
                     <input type='text' class="form-control" placeholder="dd-mm-yyyy" id="datePick2"/>
                     <span class="input-group-addon">
@@ -58,8 +74,8 @@
             </div>
         </div>
 
-        <div class="col-md-3 col-xs-12">
-            <button class="btn-card btn-card-ac1" id="btnCharts" data-toggle="modal" data-target="#modalCharts">
+        <div class="col-md-2 col-xs-12">
+            <button class="btn-card btn-card-ac1 right" id="btnCharts" data-toggle="modal" data-target="#modalCharts">
                 <span class="glyphicon glyphicon-stats">
                 </span>
             </button>
@@ -74,7 +90,7 @@
              <thead>
 
                  <tr>
-                     <th class="col-xs-2">
+                     <th class="col-xs-1">
                          @Html.DisplayNameFor(model => model.Data_Sensor_PH)
                      </th>
                      <th class="col-xs-2">
@@ -86,11 +102,14 @@
                      <th class="col-xs-2">
                          @Html.DisplayNameFor(model => model.Data_Sensor_CT)
                      </th>
-                     <th class="col-xs-2">
+                     <th class="col-xs-1">
                          @Html.DisplayNameFor(model => model.Data_Sensor_ORP)
                      </th>
                      <th class="col-xs-2">
                          @Html.DisplayNameFor(model => model.Date_Register)
+                     </th>
+                     <th class="col-xs-2">
+                         @Html.DisplayNameFor(model => model.EquipmentDTO.Cod_Equipment)
                      </th>
                  </tr>
              </thead>
@@ -98,7 +117,7 @@
                  @foreach (var item in Model)
             {
                      <tr>
-                         <td class="col-xs-2">
+                         <td class="col-xs-1">
                              @Html.DisplayFor(modelItem => item.Data_Sensor_PH)
                          </td>
                          <td class="col-xs-2">
@@ -110,11 +129,14 @@
                          <td class="col-xs-2">
                              @Html.DisplayFor(modelItem => item.Data_Sensor_CT)
                          </td>
-                         <td class="col-xs-2">
+                         <td class="col-xs-1">
                              @Html.DisplayFor(modelItem => item.Data_Sensor_ORP)
                          </td>
                          <td class="col-xs-2">
                              @Html.DisplayFor(modelItem => item.Date_Register)
+                         </td>
+                         <td class="col-xs-2">
+                             @Html.DisplayFor(modelItem => item.EquipmentDTO.Cod_Equipment)
                          </td>
                          @*<td>
                             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

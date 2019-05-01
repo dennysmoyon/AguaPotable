@@ -21,13 +21,14 @@ namespace WaterMonitoringSystemApp
 
             routes.MapRoute(
                 name: "reportSensors",
-                url: "FlowDataSensors/reportSensors/{dateSince}/{dateUntil}/",
+                url: "FlowDataSensors/reportSensors/{dateSince}/{dateUntil}/{idEq}/",
                 defaults: new
                 {
                     controller = "FlowDataSensors",
                     action = "reportSensors",
                     dateSince = UrlParameter.Optional,
-                    dateUntil = UrlParameter.Optional
+                    dateUntil = UrlParameter.Optional,
+                    idEq = UrlParameter.Optional
                 }
             );
 

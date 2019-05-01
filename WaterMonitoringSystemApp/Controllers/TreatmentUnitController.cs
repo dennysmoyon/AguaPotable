@@ -24,6 +24,7 @@ namespace WaterMonitoringSystemApp.Controllers
         }
 
         // GET: TreatmentUnit
+        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             var lstTreatmentUnit = _treatmentUnit.GetTreatmentUnits();
@@ -75,6 +76,11 @@ namespace WaterMonitoringSystemApp.Controllers
         public ActionResult DeleteTu(int id, FormCollection collection) {
             _treatmentUnit.DeleteTreatmentUnit(id);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult getTu() {
+            var tus = _treatmentUnit.GetTreatmentUnits();
+            return Json(tus, JsonRequestBehavior.AllowGet);
         }
     }
 }

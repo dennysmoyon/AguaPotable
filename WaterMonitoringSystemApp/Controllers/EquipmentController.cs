@@ -26,6 +26,7 @@ namespace WaterMonitoringSystemApp.Controllers
         }
 
         // GET: Equipment
+        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             var lstEquipment = _equipment.GetEquipments();

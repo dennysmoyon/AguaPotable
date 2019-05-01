@@ -1,4 +1,6 @@
-﻿var url = 'ws://cynaiot.com/WebSocketServer.ashx';
+﻿//var url = 'ws://cynaiot.com/WebSocketServer.ashx';
+var url = 'ws://cynaiot.com/WebSocketServer.ashx';
+
 var ws = "";
 
 $(document).ready(()=>{
