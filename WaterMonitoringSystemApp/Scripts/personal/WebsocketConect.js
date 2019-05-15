@@ -1,5 +1,5 @@
 ﻿//var url = 'ws://cynaiot.com/WebSocketServer.ashx';
-var url = 'ws://cynaiot.com/WebSocketServer.ashx';
+var url = 'ws://sairiot.com/WebSocketServer.ashx';
 
 var ws = "";
 

@@ -375,7 +375,7 @@ function getDataSensorsDB(typeFill) {
         }
 
 
-        //establecemos los alores de los graficos
+        //establecemos los valores de los graficos
         initDataSourceOX(_category, _data);
         if (dataSnDB.length > 0) {
             setChartLW(dataSnDB[0].Data_Sensor_LW);

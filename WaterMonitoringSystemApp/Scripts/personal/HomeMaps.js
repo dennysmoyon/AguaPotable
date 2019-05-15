@@ -35,7 +35,7 @@ function initMap() {
 }
 
 function loadUnitTreatment() {
-    $.get("http://cynaiot.com/api/FdsAPI/", (data, status) => {
+    $.get("http://sairiot.com/api/FdsAPI/", (data, status) => {
 
         var tuJson = JSON.parse(data);
 
@@ -87,7 +87,7 @@ function loadModal(codigoUt, idUt) {
 
     if (pageLoad == 0 || _idUt != idUt) {
 
-        $.get("http://cynaiot.com/api/TreatmentUnitAPI/" + idUt, (data, status) => {
+        $.get("http://sairiot.com/api/TreatmentUnitAPI/" + idUt, (data, status) => {
 
             $("#equipment").empty();
             option = new Option("Seleccione un equipo", "",true,true);
