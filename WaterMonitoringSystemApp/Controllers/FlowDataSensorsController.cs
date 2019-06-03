@@ -10,7 +10,7 @@ using WaterMonitoringSystemApp.Reports;
 
 namespace WaterMonitoringSystemApp.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     public class FlowDataSensorsController : Controller
     {
 

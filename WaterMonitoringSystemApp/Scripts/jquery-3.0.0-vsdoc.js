@@ -2985,7 +2985,7 @@
 
         return this.on(type, fn);
     };
-    jQuery.prototype.andSelf = function (selector) {
+    jQuery.prototype.addBack = function (selector) {
         /// <summary>
         ///     Add the previous set of elements on the stack to the current set.
         /// </summary>
